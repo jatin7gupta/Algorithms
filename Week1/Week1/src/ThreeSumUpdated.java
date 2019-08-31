@@ -24,14 +24,14 @@ public class ThreeSumUpdated {
             return (n.first == this.first && n.second == this.second && n.third == this.third);
         }
     }
-    private static boolean exists(HashSet<ThreeSum.ThreeNumbers> hs, ThreeSum.ThreeNumbers obj) {
-        for (ThreeSum.ThreeNumbers three : hs) {
-            if (three.equals(obj)) {
-                return true;
-            }
-        }
-        return false;
-    }
+//    private static boolean exists(HashSet<ThreeSum.ThreeNumbers> hs, ThreeSum.ThreeNumbers obj) {
+//        for (ThreeSum.ThreeNumbers three : hs) {
+//            if (three.equals(obj)) {
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
     private static int binarySearch(int[] list, int key) {
         int beg = 0;
         int end = list.length -1;
@@ -50,7 +50,7 @@ public class ThreeSumUpdated {
     public static void main(String[] args) {
         int[] list = new int[10];
         Scanner s = new Scanner(System.in);
-        HashSet<ThreeSum.ThreeNumbers> hs = new HashSet<>();
+        HashSet<ThreeNumbers> hs = new HashSet<>();
         int m = 0;
         while (s.hasNextInt()) {
             list[m++] = s.nextInt();
@@ -60,19 +60,13 @@ public class ThreeSumUpdated {
             for (int j = i+1; j < list.length; j++) {
                 int k = binarySearch(list, (list[i] + list[j])*-1);
                 if (k != -1 && list[i] < list[j] && list[j] < list[k] ) {
-
-                    //System.out.println(list[i]+ " + "+ list[j] + " + " + list[k] + " = " + (list[i] + list[j] + list[k]));
-                    ThreeSum.ThreeNumbers th = new ThreeSum.ThreeNumbers(list[i], list[j], list[k]);
-                    //if (!exists(hs, th)) {
+                    ThreeNumbers th = new ThreeNumbers(list[i], list[j], list[k]);
                         hs.add(th);
-                    //}
                 }
-
             }
         }
-        for (ThreeSum.ThreeNumbers three : hs) {
+        for (ThreeNumbers three : hs) {
             System.out.println(three.first + " + " + three.second + " + " + three.third + " = " + (three.first + three.second + three.third));
         }
-
     }
 }

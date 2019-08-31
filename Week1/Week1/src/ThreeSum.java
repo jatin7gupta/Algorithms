@@ -1,6 +1,5 @@
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Scanner;
 
 public class ThreeSum {
@@ -61,19 +60,15 @@ public class ThreeSum {
             for (int j = i+1; j < list.length; j++) {
                 int k = binarySearch(list, (list[i] + list[j])*-1);
                 if (k != -1) {
-
-                    //System.out.println(list[i]+ " + "+ list[j] + " + " + list[k] + " = " + (list[i] + list[j] + list[k]));
                     ThreeNumbers th = new ThreeNumbers(list[i], list[j], list[k]);
                     if (!exists(hs, th)) {
                             hs.add(th);
                     }
                 }
-
             }
         }
         for (ThreeNumbers three : hs) {
             System.out.println(three.first + " + " + three.second + " + " + three.third + " = " + (three.first + three.second + three.third));
         }
-
     }
 }
